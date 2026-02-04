@@ -14,11 +14,13 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 DOWNLOAD_DIR = "/tmp/downloads/"
 
 app = Client(
-    "bot_session", 
-    api_id=API_ID, 
-    api_hash=API_HASH, 
+    "bot_session",
+    api_id=API_ID,
+    api_hash=API_HASH,
     bot_token=BOT_TOKEN,
-    in_memory=True  # Esto evita errores de base de datos bloqueada en Koyeb
+    in_memory=True,
+    # Añadimos esto para forzar que ignore sesiones viejas
+    takeout=False 
 )
 
 async def progress(current, total, message, start_time, action):
